@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ustack.jeventstore;
+package io.scalecube.eventstore;
 
 /**
  *
  * @author nuwansa
  */
-public enum Status {
-    DONE,
-    KEY_NOT_FOUND,
-    KEY_EXIST,
-    NODE_FULL
+public class NodeException extends RuntimeException{
+
+    public NodeException(String message) {
+        super(message);
+    }
+    
+    
 }

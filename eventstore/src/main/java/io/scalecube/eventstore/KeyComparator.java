@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ustack.jeventstore;
+package io.scalecube.eventstore;
 
 /**
  *
  * @author nuwansa
  */
-public class NodeException extends RuntimeException{
-
-    public NodeException(String message) {
-        super(message);
-    }
-    
-    
+public interface KeyComparator {
+    int compare(long left,byte[] key);
 }

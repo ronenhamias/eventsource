@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ustack.jeventstore;
+package io.scalecube.eventstore;
 
 /**
  *
  * @author nuwansa
  */
-public interface KeyComparator {
-    int compare(long left,byte[] key);
+public enum Status {
+    DONE,
+    KEY_NOT_FOUND,
+    KEY_EXIST,
+    NODE_FULL
 }

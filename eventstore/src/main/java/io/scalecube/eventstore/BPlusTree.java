@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ustack.jeventstore;
+package io.scalecube.eventstore;
 
 import java.util.function.Function;
 
@@ -29,5 +29,7 @@ public class BPlusTree {
         return valueProvider;
     }
     
-    
+    public static void main(String[] args) {
+        System.out.println("min "+Long.MIN_VALUE);
+    }
 }
