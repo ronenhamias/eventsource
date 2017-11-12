@@ -56,9 +56,10 @@ public class IndexNode extends Node {
 
   /**
    * insert key with child node reference.
+   *
    * @param key key to insert in to index node
-   * @param leftChildPos   left side child position of the given key
-   * @param rightChildPos   right side child position of the given key
+   * @param leftChildPos left side child position of the given key
+   * @param rightChildPos right side child position of the given key
    * @return key status
    */
   public Status putChild(byte[] key, long leftChildPos, long rightChildPos) {
@@ -72,11 +73,9 @@ public class IndexNode extends Node {
       index = 0;
     } else {
       index = driver.binarySearch(pos, keyCount, key);
-      if (index >= 0) {
-        // TODO
-      } else if (index == -1) {
+      if (index == -1) {
         index = 0;
-      } else {
+      } else if (index < 0) {
         index = adjustIndex(index);
         index = Math.abs(index);
         index++;
@@ -94,7 +93,7 @@ public class IndexNode extends Node {
   @Override
   public Node split(byte[] key) {
     throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose Tools
-                                                                   // | Templates.
+    // | Templates.
   }
 
 }

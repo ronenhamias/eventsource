@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 public class FileNodeDriverManager extends NodeDriverManager {
 
   private Map<Integer, NodeDriver> mapDrivers = new HashMap<>();
-  private int nodeCount = 0;
 
   public FileNodeDriverManager(int nodeDriverSizeInBytes, int nodeSizeInBytes, Function<byte[], Long> keyProvider,
       Function<byte[], Long> valueProvider, KeyComparator comparator) {
@@ -32,7 +31,7 @@ public class FileNodeDriverManager extends NodeDriverManager {
       return new NodeDriver(this, index, buffer);
     } catch (Exception ex) {
       Logger.getLogger(FileNodeDriverManager.class.getName()).log(Level.SEVERE, null, ex);
-      throw new RuntimeException(ex);
+      throw new NodeException(ex);
     }
   }
 

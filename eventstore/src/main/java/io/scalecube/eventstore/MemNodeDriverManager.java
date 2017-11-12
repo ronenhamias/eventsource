@@ -8,7 +8,6 @@ import java.util.function.Function;
 public class MemNodeDriverManager extends NodeDriverManager {
 
   private Map<Integer, NodeDriver> mapDrivers = new HashMap<>();
-  private int nodeCount = 0;
 
   public MemNodeDriverManager(int nodeDriverSizeInBytes, int nodeSizeInBytes, Function<byte[], Long> keyProvider,
       Function<byte[], Long> valueProvider, KeyComparator comparator) {

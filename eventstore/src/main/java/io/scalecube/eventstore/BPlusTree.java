@@ -3,8 +3,8 @@ package io.scalecube.eventstore;
 import java.util.function.Function;
 
 public class BPlusTree {
-  Function<String, Long> keyProvider;
-  Function<String, Long> valueProvider;
+  private Function<String, Long> keyProvider;
+  private Function<String, Long> valueProvider;
 
   public BPlusTree(Function<String, Long> keyProvider, Function<String, Long> valueProvider) {
     this.keyProvider = keyProvider;

@@ -17,11 +17,7 @@ public class NodeIterator implements Iterator<NodeEntry> {
     if (current == null) {
       return false;
     }
-    if (index < current.getKeyCount()) {
-      return true;
-    } else {
-      return false;
-    }
+    return index < current.getKeyCount();
   }
 
   @Override
