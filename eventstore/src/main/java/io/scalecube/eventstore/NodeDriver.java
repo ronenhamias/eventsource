@@ -71,6 +71,12 @@ public class NodeDriver {
     return ByteBufferUtil.binarySearch(buffer, pos, 0, keyCount, key, driverMan.getComparator());
   }
 
+  /**
+   * shift 8 byte to right side from given index.
+   * @param pos starting offset of the byte buffer
+   * @param index index of the 8 byte that we need to shift
+   * @param count  number of 8 bytes that we shifting
+   */
   public void moveIndex(int pos, int index, int count) {
     int dest = count;
     while (dest > index) {
@@ -92,6 +98,11 @@ public class NodeDriver {
     return buffer.get(pos + driverMan.getNodeTypeOffset());
   }
 
+  /**
+   * load node from the given position of the file.
+   * @param pos starting position of the node
+   * @return node , depend on the type , it can be LeafNode or IndexNode
+   */
   public Node loadNode(long pos) {
     if (pos == 0) {
       return null;

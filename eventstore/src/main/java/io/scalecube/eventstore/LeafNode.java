@@ -3,6 +3,7 @@ package io.scalecube.eventstore;
 import java.util.Iterator;
 
 /**
+ * represent leafNode of the BPlusTree. which contains all the key,value in sorted order.
  *
  * @author nuwansa
  */
@@ -13,7 +14,7 @@ public class LeafNode extends Node {
   }
 
   @Override
-  public Iterator<NodeEntry> findGTE(byte[] key) {
+  public Iterator<NodeEntry> findGte(byte[] key) {
     int keyCount = getKeyCount();
     if (keyCount == 0) {
       return new NodeIterator(null, 0);
@@ -63,23 +64,27 @@ public class LeafNode extends Node {
     int index = driver.getMaxKeyCount() / 2;
     long pos = getKeyPos(index);
     int val = driver.getComparator().compare(pos, key);
-    if (val >= 0)
+    if (val >= 0) {
       index++;
-
+    }
     return null;
   }
 
+  /**
+   * *
+   * print leaf node internal structure.
+   */
   public void print() {
-    int i = 0;
-    while (i < getKeyCount()) {
-      System.out.print(getKeyPos(i) + ",");
-      i++;
+    int index = 0;
+    while (index < getKeyCount()) {
+      System.out.print(getKeyPos(index) + ",");
+      index++;
     }
     System.err.println("");
-    i = 0;
-    while (i < getKeyCount()) {
-      System.out.print(getValuePos(i) + ",");
-      i++;
+    index = 0;
+    while (index < getKeyCount()) {
+      System.out.print(getValuePos(index) + ",");
+      index++;
     }
     System.err.println("");
   }

@@ -14,12 +14,14 @@ public class NodeIterator implements Iterator<NodeEntry> {
 
   @Override
   public boolean hasNext() {
-    if (current == null)
+    if (current == null) {
       return false;
-    if (index < current.getKeyCount())
+    }
+    if (index < current.getKeyCount()) {
       return true;
-    else
+    } else {
       return false;
+    }
   }
 
   @Override

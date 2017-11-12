@@ -17,6 +17,14 @@ public abstract class NodeDriverManager {
   private final int nodeDriverSizeInBytes;
   protected final Map<Integer, NodeDriver> mapDrivers = new HashMap<>();
 
+  /**
+   * abstract layer for ByteBuffer manager.
+   * @param nodeDriverSizeInBytes memory map max segment size
+   * @param nodeSizeInBytes buffer max size of the node
+   * @param keyProvider    keyProvider
+   * @param valueProvider  valueProvider
+   * @param comparator     comparator
+   */
   public NodeDriverManager(int nodeDriverSizeInBytes, int nodeSizeInBytes, Function<byte[], Long> keyProvider,
       Function<byte[], Long> valueProvider, KeyComparator comparator) {
     this.nodeDriverSizeInBytes = nodeDriverSizeInBytes;

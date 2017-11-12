@@ -9,13 +9,13 @@ public class IndexNode extends Node {
   }
 
   public Node getLeftChild(int index) {
-    long p = driver.getValue(pos, index);
-    return driver.loadNode(pos);
+    long value = driver.getValue(pos, index);
+    return driver.loadNode(value);
   }
 
   public Node getRightChild(int index) {
-    long p = driver.getValue(pos, index + 1);
-    return driver.loadNode(p);
+    long value = driver.getValue(pos, index + 1);
+    return driver.loadNode(value);
   }
 
   public void putLeftChildPos(int index, long val) {
@@ -41,7 +41,7 @@ public class IndexNode extends Node {
   }
 
   @Override
-  public Iterator<NodeEntry> findGTE(byte[] key) {
+  public Iterator<NodeEntry> findGte(byte[] key) {
     int index = driver.binarySearch(pos, getKeyCount(), key);
     Node node;
     if (index == -1) {
@@ -51,10 +51,17 @@ public class IndexNode extends Node {
       index = Math.abs(adjustIndex(index));
       node = getRightChild(index);
     }
-    return node.findGTE(key);
+    return node.findGte(key);
   }
 
-  public Status put(byte[] key, long leftChildPos, long rightChildPos) {
+  /**
+   * insert key with child node reference.
+   * @param key key to insert in to index node
+   * @param leftChildPos   left side child position of the given key
+   * @param rightChildPos   right side child position of the given key
+   * @return key status
+   */
+  public Status putChild(byte[] key, long leftChildPos, long rightChildPos) {
     int keyCount = getKeyCount();
     if (isFull()) {
       return Status.NODE_FULL;

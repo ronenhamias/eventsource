@@ -14,7 +14,7 @@ public abstract class Node {
 
   public abstract Status put(byte[] key, byte[] value);
 
-  public abstract Iterator<NodeEntry> findGTE(byte[] key);
+  public abstract Iterator<NodeEntry> findGte(byte[] key);
 
   public abstract Node split(byte[] key);
 
